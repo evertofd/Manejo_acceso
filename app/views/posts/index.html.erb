@@ -14,17 +14,26 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to "#{post.title}", post %></td>
-        <td><%= post.user.name %></td>
-        <td><%= post.comments.count %></td>
-        <td><%= link_to 'Editar', edit_post_path(post), class: 'btn btn-sm btn-success' %></td>
-        <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Post?' }, class: 'btn btn-sm btn-danger' %></td>
-      </tr>
+    <tr>
+      <td><%= link_to "#{post.title}", post %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.comments.count %></td>
+      <td>
+
+        <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-sm btn-success' %>
+
+      </td>
+      <td>
+        <% if can?(:destroy, post) %>
+        <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Post?' }, class: 'btn btn-sm btn-danger' %>
+        <% end %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
 
 <%= link_to 'Nuevo Post', new_post_path, class: 'btn btn-primary' %>

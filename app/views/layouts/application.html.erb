@@ -35,6 +35,12 @@
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
+
+          <%if user_signed_in? && current_user.admin? %>
+
+          <li><%= link_to 'Tablero de Administrador', pages_dashboard_path, class: 'nav-link'%></li>
+
+          <% end %>
 	        <% if user_signed_in? %>
 	        	<li><a href="#">Hola <%= current_user.name %>!</a></li>
 	        	<li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %></li>
@@ -46,6 +52,10 @@
 	    </div>
 	  </div>
 	</nav>
+
+  <% if alert.present? %>
+  <div class="alert"> <%= alert %> </div>
+  <% end %>
     <div class="container">
     	<%= yield %>
     </div>

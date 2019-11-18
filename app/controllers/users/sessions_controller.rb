@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  skip_authorization_check
   # GET /resource/sign_in
   # def new
   #   super
@@ -12,9 +12,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  #def destroy
+  #  super
+   #end
+
 
   # protected
 

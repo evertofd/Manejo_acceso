@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	skip_authorization_check 
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = Comment.new(content:params[:comment][:content], user: current_user)
