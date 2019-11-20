@@ -9,7 +9,7 @@ skip_authorization_check
     if @user.admin?
       @user.visit!
     else
-      @user.admin?
+      @user.admin!
   end
   redirect_to pages_dashboard_path
 end

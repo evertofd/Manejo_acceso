@@ -18,12 +18,13 @@
       <td><%= u.role %></td>
       <td>
 
-
-    
-            <%= link_to 'Eliminar User', destroy_user_path(u), method: :delete, class: 'btn btn-danger',data: { confirm: 'Estás seguro que deseas eliminar al usuario?' } %> </td>
+        <% if current_user.admin? %>
+        <td>
+          <%= link_to 'Cambiar Rol', type_rol_path(u), method: :patch, class: 'btn btn-primary' %>
+          <%= link_to 'Eliminar User', destroy_user_path(u), method: :delete, class: 'btn btn-danger',data: { confirm: 'Estás seguro que deseas eliminar al usuario?' } %> </td>
 
           <td></td>
-
+          <% end %>
         </tr>
         <% end %>
       </tbody>

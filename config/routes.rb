@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
 	get 'pages/dashboard', to: 'pages#dashboard'
- delete 'pages/:id', to: 'pages#destroy', as: 'destroy_user'
+	patch 'pages/:id', to: 'pages#type_rol', as: 'type_rol'
+ 	delete 'pages/:id', to: 'pages#destroy', as: 'destroy_user'
 
 	resources :posts do
 		resources :comments, only: [:create, :destroy]
